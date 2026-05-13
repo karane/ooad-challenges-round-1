@@ -1,9 +1,12 @@
 package org.karane.renderer;
 
+import java.nio.file.Path;
+
 import org.karane.renderer.builder.TemplateBuilder;
 import org.karane.renderer.domain.Template;
 import org.karane.renderer.renderer.CsvRenderer;
 import org.karane.renderer.renderer.HtmlRenderer;
+import org.karane.renderer.renderer.PdfRenderer;
 import org.karane.renderer.service.RenderService;
 
 public class Main {
@@ -22,5 +25,21 @@ public class Main {
         System.out.println("=== CSV ===");
         System.out.println(new RenderService(new CsvRenderer()).render(template));
 
-    }
+        
+        System.out.println("=== PDF ===");
+
+        Path pdfPath = Path.of("report.pdf");
+
+        try {
+
+            new PdfRenderer().renderToFile(template, pdfPath);
+            System.out.println("PDF written to " + pdfPath.toAbsolutePath());
+
+        } catch (Exception e) {
+
+            System.err.println("PDF rendering failed: " + e.getMessage());
+
+        }
+
+}
 }
