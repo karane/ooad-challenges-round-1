@@ -5,31 +5,32 @@ import java.util.List;
 public class HtmlRenderer extends BaseRenderer {
 
     @Override
-    protected void renderTitle(StringBuilder sb, String title) {
-        sb.append("<h1>").append(title).append("</h1>\n");
-        sb.append("<table>\n");
+    protected String renderTitle(String title) {
+        return "<h1>" + title + "</h1>\n<table>\n";
     }
 
     @Override
-    protected void renderHeaders(StringBuilder sb, List<String> headers) {
-        sb.append("  <tr>");
+    protected String renderHeaders(List<String> headers) {
+        StringBuilder sb = new StringBuilder("  <tr>");
         for (String h : headers) {
             sb.append("<th>").append(h).append("</th>");
         }
         sb.append("</tr>\n");
+        return sb.toString();
     }
 
     @Override
-    protected void renderRow(StringBuilder sb, List<String> cells) {
-        sb.append("  <tr>");
+    protected String renderRow(List<String> cells) {
+        StringBuilder sb = new StringBuilder("  <tr>");
         for (String cell : cells) {
             sb.append("<td>").append(cell).append("</td>");
         }
         sb.append("</tr>\n");
+        return sb.toString();
     }
 
     @Override
-    protected void renderFooter(StringBuilder sb) {
-        sb.append("</table>\n");
+    protected String renderFooter() {
+        return "</table>\n";
     }
 }

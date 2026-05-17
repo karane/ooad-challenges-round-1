@@ -10,17 +10,17 @@ public abstract class BaseRenderer implements TemplateRenderer {
     @Override
     public final String render(Template template) {
         StringBuilder sb = new StringBuilder();
-        renderTitle(sb, template.title());
-        renderHeaders(sb, template.headers());
+        sb.append(renderTitle(template.title()));
+        sb.append(renderHeaders(template.headers()));
         for (Row row : template.rows()) {
-            renderRow(sb, row.cells());
+            sb.append(renderRow(row.cells()));
         }
-        renderFooter(sb);
+        sb.append(renderFooter());
         return sb.toString();
     }
 
-    protected abstract void renderTitle(StringBuilder sb, String title);
-    protected abstract void renderHeaders(StringBuilder sb, List<String> headers);
-    protected abstract void renderRow(StringBuilder sb, List<String> cells);
-    protected void renderFooter(StringBuilder sb) {}
+    protected abstract String renderTitle(String title);
+    protected abstract String renderHeaders(List<String> headers);
+    protected abstract String renderRow(List<String> cells);
+    protected String renderFooter() { return ""; }
 }
