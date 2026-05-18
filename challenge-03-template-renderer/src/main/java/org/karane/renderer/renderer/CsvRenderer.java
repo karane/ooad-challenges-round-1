@@ -5,17 +5,17 @@ import java.util.List;
 public class CsvRenderer extends BaseRenderer {
 
     @Override
-    protected void renderTitle(StringBuilder sb, String title) {
-        sb.append("# ").append(title).append("\n");
+    protected String renderTitle(String title) {
+        return "# " + title + "\n";
     }
 
     @Override
-    protected void renderHeaders(StringBuilder sb, List<String> headers) {
-        sb.append(String.join(",", headers)).append("\n");
+    protected String renderHeaders(List<String> headers) {
+        return String.join(",", headers) + "\n";
     }
 
     @Override
-    protected void renderRow(StringBuilder sb, List<String> cells) {
-        sb.append(String.join(",", cells)).append("\n");
+    protected String renderRow(List<String> cells) {
+        return String.join(",", cells) + "\n";
     }
 }
