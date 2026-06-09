@@ -3,11 +3,6 @@ package org.karane.ticket.domain;
 import java.time.LocalDateTime;
 import java.util.*;
 
-/**
- * A ticketed event at a venue. On construction it initialises the full seating
- * plan — one {@link SeatEntry} per seat across all zones.
- * Built via the inner {@link Builder}.
- */
 public final class Show {
 
     private final String id;
@@ -88,10 +83,6 @@ public final class Show {
         }
         return plan;
     }
-
-    // ------------------------------------------------------------------ //
-    // Builder                                                             //
-    // ------------------------------------------------------------------ //
 
     public static Builder builder(String name) {
         return new Builder(name);
