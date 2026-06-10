@@ -10,11 +10,11 @@ public class DynamicPricingStrategy implements PricingStrategy {
 
     private final PricingStrategy base;
     private final double demandThreshold; 
-    private final BigDecimal surchargeRate; // e.g. 0.25 = 25%
+    private final BigDecimal surchargeRate; 
 
     public DynamicPricingStrategy(PricingStrategy base, double demandThreshold, double surchargePercent) {
         if (demandThreshold < 0 || demandThreshold > 1)
-            throw new IllegalArgumentException("demandThreshold must be 0–1");
+            throw new IllegalArgumentException("demandThreshold must be 0--1");
         if (surchargePercent < 0)
             throw new IllegalArgumentException("surchargePercent must be >= 0");
         this.base           = base;
